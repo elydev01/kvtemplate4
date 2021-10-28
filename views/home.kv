@@ -1,0 +1,162 @@
+<Space@BoxLayout>:
+    size_hint: 1, None
+    height: 1
+
+
+<Item@MDCard>:
+    source: ""
+    title: ""
+    price: 0
+    size_hint: 1, None
+    height: self.minimum_height
+    elevation: 15
+    radius: [dp(10)]
+    ripple_behavior: True
+    Image:
+        source: root.source
+        size_hint_y: None if root.orientation == 'vertical' else 1
+        height: dp(90) if root.orientation == 'vertical' else 0
+        canvas:
+            Clear
+            Color:
+                rgba: [1, 1, 1, 1]
+            RoundedRectangle:
+                size: self.size[0] - dp(14), self.size[1]
+                pos: self.x + dp(7), self.y + dp(10)
+                radius: [dp(5)]
+                texture: self.texture
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: 0 if root.orientation == 'vertical' else dp(10)
+        adaptive_height: True
+        pos_hint: {'center_y': .5}
+        padding: dp(10), dp(10)
+        MDLabel:
+            text: root.title
+            adaptive_height: True
+            font_size: sp(14)
+            padding: [0, dp(5)]
+        MDLabel:
+            text: "$ {0}".format(root.price)
+            padding: [dp(15), dp(5)]
+            adaptive_size: True
+            color: 0,0,0,1
+            md_bg_color: .95,.95,.95,1
+            radius: [dp(10)]
+
+
+<HomeMainScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 1,1,1,1
+        MDToolbar:
+            title: "Home"
+            elevation: 0
+            md_bg_color: 1,1,1,1
+            specific_text_color: app.theme_cls.primary_dark
+            pos_hint: {"top": 1}
+            left_action_items: [["menu", lambda x:x]]
+            right_action_items: [["forum-outline", lambda x:x], ["basket-outline", lambda x:x]]
+        ScrollView:
+            always_overscroll: False
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: 'vertical'
+                MDCard:
+                    orientation: 'vertical'
+                    md_bg_color: 1,1,1,1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(15)
+                    MDTextField:
+                        hint_text: "What are you looking for?"
+                        size_hint_x: None
+                        width: root.width - dp(80)
+                        mode: "rectangle"
+                        pos_hint: {'center_x': .5}
+                        icon_right: "camera-outline"
+                        icon_right_color: 1,1,1,1
+                    MDBoxLayout:
+                        adaptive_height: True
+                        Space:
+                        MDRectangleFlatIconButton:
+                            icon: "view-grid-outline"
+                            text: "Categories"
+                            theme_text_color: "Custom"
+                            text_color: app.theme_cls.primary_dark
+                            line_color: 1, 1, 1, 1
+                            icon_color: app.theme_cls.primary_dark
+                        Space:
+                        MDRectangleFlatIconButton:
+                            icon: "camera-outline"
+                            text: "Best Deals"
+                            theme_text_color: "Custom"
+                            text_color: app.theme_cls.primary_dark
+                            line_color: 1, 1, 1, 1
+                            icon_color: app.theme_cls.primary_dark
+                        Space:
+                    Space:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    adaptive_height: True
+                    padding: dp(20), dp(30)
+                    spacing: dp(15)
+                    Item:
+                        price: 180
+                        source: 'assets/image-01.png'
+                        title: 'Ice cream is made with carrageenan...'
+                    MDGridLayout:
+                        adaptive_height: True
+                        cols: 2
+                        spacing: dp(10)
+                        padding: 0, dp(20)
+                        Item:
+                            price: 220
+                            source: 'assets/image-02.png'
+                            title: 'Is makeup one of your daily esse...'
+                            orientation: 'vertical'
+                        Item:
+                            price: 40
+                            source: 'assets/image-03.png'
+                            title: "Coffee is more than just a drink..."
+                            orientation: 'vertical'
+                    Item:
+                        price: 188
+                        source: 'assets/image-04.png'
+                        title: "Fashion is a popular style, especially in..."
+                    Space:
+                        height: dp(15)
+                    MDCard:
+                        size_hint_y: None
+                        ripple_behavior: True
+                        orientation: 'vertical'
+                        height: self.minimum_height
+                        radius: [dp(10)]
+                        Image:
+                            source: "assets/image-05.png"
+                            size_hint_y: None
+                            height: dp(150)
+                            canvas:
+                                Clear
+                                Color:
+                                    rgba: [1, 1, 1, 1]
+                                RoundedRectangle:
+                                    size: self.size[0] - dp(14), self.size[1]
+                                    pos: self.x + dp(7), self.y + dp(10)
+                                    radius: [dp(5)]
+                                    texture: self.texture
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            spacing: dp(5)
+                            padding: dp(15), dp(10)
+                            adaptive_height: True
+                            MDLabel:
+                                text: 'Argon is a great free UI packag...'
+                                adaptive_height: True
+                            MDLabel:
+                                text: "$ 180"
+                                padding: [dp(15), dp(5)]
+                                adaptive_size: True
+                                color: 0,0,0,1
+                                md_bg_color: .95,.95,.95,1
+                                radius: [dp(10)]
