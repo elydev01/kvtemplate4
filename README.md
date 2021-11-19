@@ -1,5 +1,6 @@
 # kvtemplate4
 
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=elydev01.kvtemplate4">
 
 ![](assets/screen1.png)
 ![](assets/screen2.png)
